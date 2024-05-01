@@ -31,21 +31,25 @@ console.log("This is the fnc getting called" + " " + getComputerChoice());
 function determineWinner(userChoice, computerChoice) {
     if (userChoice === computerChoice) {    //!Tie game
         console.log(`Tie game. Better luck next time.`)
-    } else if(userChoice === "rock"){       //!Rock
+    } else {
+        if (userChoice === "rock") {
+            if (computerChoice === "paper") {
+                console.log(`Computer wins!`)
+            } else {
+                console.log(`User wins!`)
+            }
+        } else if (userChoice === "paper") {
+            if (computerChoice === "rock") {
+                console.log(`User wins!!`)
+            } else {
+                console.log(`Computer Wins!!`)
+            }
+        } else {
         if (computerChoice === "paper") {
-            console.log(`Computer has WON!   -line 36`)
-        }
-    } else if(userChoice === "paper") {     //!Paper
-        if (computerChoice === "rock" || computerChoice === "scissors") {
-            console.log(`Computer has LOST!  -line 42`);
-        } else {
-            console.log(`User has WON!   -line 44`);
-        }
-    } else if (userChoice === "scissors") {     //!Scissors
-        if (computerChoice === "rock" || computerChoice === "paper") {
-            console.log(`Comp. Wins   -line 48`);
-        } else {
-            console.log(`Users Wins   -line 50`);
+                console.log(`User Wins!!!`)
+            } else {
+                console.log(`Computer Wins!!!`)
+            }
         }
     }
 }
