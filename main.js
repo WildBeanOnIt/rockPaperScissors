@@ -10,7 +10,7 @@ function getUserChoice(userInput) {
     
     // console.log(userInput)
 };
-getUserChoice('rock');
+// getUserChoice('rock');
 
 function getComputerChoice() {
     //gets the comp. input
@@ -26,7 +26,7 @@ function getComputerChoice() {
     return randomNumGen
 }
 
-console.log("This is the fnc getting called" + " " + getComputerChoice());
+// console.log("This is the fnc getting called" + " " + getComputerChoice());
 
 function determineWinner(userChoice, computerChoice) {
     if (userChoice === computerChoice) {    //!Tie game
@@ -55,3 +55,13 @@ function determineWinner(userChoice, computerChoice) {
 }
 
 determineWinner("paper", "scissors");
+
+function playGame() {
+    let userChoice = getUserChoice("scissors");
+    let computerChoice = getComputerChoice();
+    console.log(userChoice)
+    console.log(computerChoice)
+    determineWinner(userChoice, computerChoice);
+}
+
+playGame();
