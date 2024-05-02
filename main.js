@@ -2,66 +2,78 @@ function getUserChoice(userInput) {
     //Gets user Inputs
     userInput = userInput.toLowerCase();
 
-    if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
-        console.log(`User Input: ${userInput}`);
+    if (userInput === "rock" || userInput === "paper" || userInput === "scissors" || userInput === "bomb") {
+        return userInput;
     } else {
-        console.log(`Invalid input`);
+        return "Wrong Input";
     }
-    
-    // console.log(userInput)
 };
-// getUserChoice('rock');
 
 function getComputerChoice() {
     //gets the comp. input
     let randomNumGen = Math.floor(Math.random() * 3);
 
     if (randomNumGen === 0) {
-        console.log(`rock`)
+        return "rock";
     } else if (randomNumGen === 1) {
-        console.log(`paper`)
+        return "paper";
     } else {
-        console.log(`scissors`)
+        return "scissors";
     }
-    return randomNumGen
 }
-
-// console.log("This is the fnc getting called" + " " + getComputerChoice());
 
 function determineWinner(userChoice, computerChoice) {
+    //Magic keyword to always win the game.
+    if (userChoice === "bomb") {
+        return "User has won!";
+    }
+
     if (userChoice === computerChoice) {    //!Tie game
-        console.log(`Tie game. Better luck next time.`)
-    } else {
+        return "Tie game. Better luck next time.";
+    }
         if (userChoice === "rock") {
-            if (computerChoice === "paper") {
-                console.log(`Computer wins!`)
-            } else {
-                console.log(`User wins!`)
+            if (computerChoice === "paper"){
+                return "Computer won";
             }
-        } else if (userChoice === "paper") {
-            if (computerChoice === "rock") {
-                console.log(`User wins!!`)
-            } else {
-                console.log(`Computer Wins!!`)
-            }
-        } else {
-        if (computerChoice === "paper") {
-                console.log(`User Wins!!!`)
-            } else {
-                console.log(`Computer Wins!!!`)
+
+            if (computerChoice === "scissors"){
+                return "User won";
             }
         }
-    }
-}
 
-determineWinner("paper", "scissors");
+        if (userChoice === "paper"){
+            if (computerChoice === "rock") {
+                return "user Wins.";
+            }
 
-function playGame() {
-    let userChoice = getUserChoice("scissors");
+            if (computerChoice === "scissors") {
+                return "Computer Wins.";
+            }
+        }
+
+        if (userChoice === "scissors") {
+            if (computerChoice === "rock") {
+                return "Computer Wins.";
+            }
+
+            if (computerChoice === "paper") {
+                return "User Wins.";
+            }
+        }
+    };
+
+function playGame(userInput) {
+    let userChoice = getUserChoice(userInput);
     let computerChoice = getComputerChoice();
-    console.log(userChoice)
-    console.log(computerChoice)
-    determineWinner(userChoice, computerChoice);
+
+    
+    console.log("User choice...", userChoice);
+    console.log("Computer choice...", computerChoice);
+    
+    console.log(determineWinner(userChoice, computerChoice));
 }
 
-playGame();
+let userInput = prompt("Rock 🪨, Paper 📃, Scissors ✂️, shoooot 🔫")
+
+
+playGame(userInput);
